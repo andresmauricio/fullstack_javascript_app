@@ -13,21 +13,21 @@ class UI {
                 const div = document.createElement('div');
                 div.className = '';
                 div.innerHTML = `
-                    <div class="card mt-5">
+                    <div class="card">
                         <div class="card-content">
-                            <p>
+                            <p class="title">
                                 ${book.title}
                             </p>
                             <p>
-                                ${book.author}
+                                <span>Autor:</span>  ${book.author}
                             </p>
                             <p>
-                                ${book.isbn}
+                                <span>Isbn:</span> ${book.isbn}
                             </p>
                             <p>
-                                ${format(book.created_at)}
+                                <span>Agregado:</span> ${format(book.created_at)}
                             </p>
-                            <a href="#" class="button is-danger" _id="${book._id}">Eliminar</a>
+                            <a href="#" class="button  deletes" _id="${book._id}">Eliminar</a>
                         </div>
                     </div>  
                 `;
@@ -47,7 +47,10 @@ class UI {
 
     renderMessage() {}
 
-    deleteBook() {}
+    async deleteBook(bookId) {
+        await bookServices.deleteBook(bookId);
+        this.renderBooks();
+    }
 
 
 }

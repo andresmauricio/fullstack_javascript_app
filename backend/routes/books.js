@@ -16,8 +16,8 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-    await Book.findByIdAndDelete(req.param.id);
-    res.json({result: true});
+    const deleteBook = await Book.findByIdAndDelete(req.params.id);
+    res.json({result: true, bookDeleted: deleteBook});
 });
 
 module.exports = router;

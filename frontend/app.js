@@ -26,3 +26,11 @@ document.getElementById('book-form')
         
         event.preventDefault();
     });
+
+document.getElementById('books-card')
+    .addEventListener('click', event => {
+        if (event.target.classList.contains('deletes')) {
+            ui.deleteBook(event.target.getAttribute('_id'))
+        }
+        event.preventDefault();
+    })
